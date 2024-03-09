@@ -1,0 +1,39 @@
+open cmd and type node to make sure node is installed
+
+and type npm to avoid errors
+
+npm config set registry https://infyartifactory.ad.infosys.com/artifactory/api/npm/npm  --> only infosys network
+
+'npx create-react-app react-basics to download the proj before that in our system we need to use
+'npm i web-vitals --save-dev' if fail to run
+
+url to practice
+https://jsonplaceholder.typicode.com/todos
+
+'npm instal axios' -> to instal the packages to do get post operations
+ (JavaScript library for making HTTP requests from a browser or Node.js. It provides a simple and consistent API)
+'npm install react-router-dom' -> to install routers
+(is a package that provides routing capabilities for React applications.) 
+'npm install -g json-server' ->to install json server in local folder
+'npx json-server-watch employees.json -port 4000' ->if we are using internal folder server json-server-watch db.json --port 4000 to run json server
+
+
+to install redux packages
+'npm install react-redux'
+'npm install redux'
+'npm install redux-devtools-extension'
+'npm install redux-thunk'
+
+Express js
+'npm init'-> we can have the package.json file it will create basic one
+'npm i express' ->install express packages npm i mongoose-> connect mongo
+'nom i body-parser'
+
+npm i -D nodemon" ->help to stoping and staring the server if we done any changes
+'npm i nodemailer'
+'npm i mailgen'
+
+npm create vite@latest -> to create vite project
+ cd <project-name>
+  npm install
+  npm run dev

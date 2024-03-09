@@ -1,0 +1,108 @@
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .todo-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .checkbox-col {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  
+  .checkbox {
+    margin-right: 10px;
+  }
+  
+  .text-col {
+    flex: 3;
+  }
+  
+  .date-col {
+    flex: 2;
+  }
+  
+  .button-col {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .todo-text {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .date-text {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .completed {
+    text-decoration: line-through;
+    color: #888;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  .kg-button {
+    margin-left: 10px;
+  }
+  
+  /* TodoItem.css */
+
+.container {
+    margin-top: 20px;
+  }
+  
+  .kg-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .col-sm-5,
+  .col-sm-4,
+  .col-sm-2 {
+    padding: 5px;
+  }
+  
+  input[type="text"],
+  input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+  
+  .text-rows {
+    margin-top: 20px;
+  }
+  
+  /* AddTodo.css */
+  
+  .container {
+    text-align: center;
+  }
+  
+  .kg-button {
+    margin-top: 10px;
+  }
+  

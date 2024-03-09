@@ -1,0 +1,26 @@
+h1{
+    font-weight: 700;
+    font-size: 45px;
+    margin: 20px;
+    margin-bottom: 20px;
+}
+input{
+    width: 100;
+}
+.text-rows{
+    text-align: left;
+}
+.kg-row{
+    margin:10px 5px;
+}
+.kg-button{
+    min-width: 80px;
+}
+.clock-container{
+    margin-top: 50px;
+    background-color: rgb(208, 253, 253);
+}
+.food-container{
+    margin-top: 50px;
+}
+
