@@ -34,12 +34,11 @@ router.post("/addPost",  async (req, res) => {
 VALUES (
     ?,?,?,?,?,?,?
 );`;
-    const selectQuery = `SELECT * FROM userposts ORDER BY RANDOM() LIMIT 10;`;
+    
     await runInsertQuery(createQuery, insertQuery, args, (err) => {
         if (err) console.log(err);
     });
-    const postData = await runSelectQuery(selectQuery, []);
-    res.send(postData);
+    res.send(post_id);
 
 });
 
@@ -56,6 +55,7 @@ router.post('/allPosts',async(req,res)=>{
 
 router.post('/upload',upload.single("image"),(req,res)=>{
     try {
+        if(req.file){
         // Access the uploaded file name
         const fileName = req.file.filename;
 
@@ -64,6 +64,8 @@ router.post('/upload',upload.single("image"),(req,res)=>{
         console.log(filePath)
         // Do something with the filePath, like storing it in the database or sending it in the response
         res.json({ filePath: filePath });
+        }
+        res.json({ filePath: "No Photo"});
     } catch (error) {
         console.error('Error handling file upload:', error);
         res.status(500).json({ error: 'Internal Server Error' });

@@ -55,7 +55,7 @@ const Post = ({ post }) => {
             </div>
           </div >
           {post.tags.map((tag) => (
-            <span className="hashTag" key={tag}>{`#${tag}`}</span>
+            <span className="hashTag" key={tag}>{`${tag}`}</span>
           ))}
         </div>
       </div>

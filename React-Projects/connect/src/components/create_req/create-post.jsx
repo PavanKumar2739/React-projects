@@ -3,22 +3,19 @@ import { PostList } from "../../store/posts-list-store";
 import UploadImage from "./uploadImage";
 import { ServiceRequest } from "../../apis/serviceReq";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { splitTags } from "../../pages/Home";
 
-const splitTags =(currentVal,action)=>{
-  const hashtagRegex = /\B#[^\s#]+/g;
-  // Extract hashtags from the text
-  const hashtags = action.payload.match(hashtagRegex);
 
-  return hashtags || [];
-}
 const CreatePost = () => {
+  const navigate = useNavigate();
   const {addPost} = useContext(PostList);
   const userIdElement = useRef();
   const postTittleElement = useRef();
   const postBodyElement = useRef();
   const reactionsElement = useRef();
   const tagsElement = useRef();
-  const [tags,dispatchTags] =useReducer(splitTags,[])
+  
   const [image,setImage]=useState('');
   const [file, setFile] = useState();
 
@@ -30,17 +27,15 @@ const CreatePost = () => {
     
     const postTittle = postTittleElement.current.value;
     const postBody = postBodyElement.current.value;
-    const reactions = reactionsElement.current.value;
+    const reactions1 = reactionsElement.current.value;
     const tagsText = tagsElement.current.value;
    
     postTittleElement.current.value = "";
     postBodyElement.current.value = '';
     tagsElement.current.value = '';
     setImage('');
-
-    dispatchTags({
-     payload:tagsText
-    })
+    const tags = splitTags(tagsText);
+    
     
 
     try {
@@ -54,22 +49,21 @@ const CreatePost = () => {
         image:res.data.filePath,
         tittle:postTittle,
         body:postBody,
-        reactions:reactions,
+        reactions:reactions1,
         userId:username,
         tags:tagsText        
   }
-     const posts=await ServiceRequest.callAPI('/addPost',payload,{
+     const post_id=await ServiceRequest.callAPI('/addPost',payload,{
         'Content-Type':'multipart/form-data',
-    },).catch(e=>{
+    }).catch(e=>{
       alert('Failed to upload the image')
     });
 
-    for(const post of posts){
-      const {body,image,post_id,reactions,tags,title,userId}=posts.body;
-      addPost(post_id,image,title,body,reactions,tags,userId);
-    }
+      
+      addPost(post_id,payload.image,payload.tittle,payload.body,payload.reactions,tags,payload.userId);
+    
     alert('Post uploaded successfully..!')
-
+    navigate("/");
       console.log(res.data);
     } catch (err) {
       console.error(err);
@@ -140,3 +134,4 @@ const CreatePost = () => {
   );
 };
 export default CreatePost;
+

@@ -1,4 +1,4 @@
-import { createContext, useReducer, useRef, useState } from "react";
+import { createContext, useCallback, useMemo, useReducer, useRef, useState } from "react";
 import { ServiceRequest } from "../apis/serviceReq";
 
 export const PostList = createContext({
@@ -56,7 +56,7 @@ const PostListProvider = ({children})=>{
             payload:{
                     post_id:post_id,
                     image:image,
-                    tittle:postTittle,
+                    title:postTittle,
                     body:postBody,
                     reactions:reactions,
                     userId:userid,
@@ -75,7 +75,8 @@ const PostListProvider = ({children})=>{
         console.error('Error fetching posts:', e);
     }
     }
-    const deletePost =(postId)=>{
+    //useCallback simple ex:
+    const deletePost =useCallback((postId)=>{
     
       dispatchPostList({
         type : 'DELETE_POST',
@@ -84,7 +85,11 @@ const PostListProvider = ({children})=>{
         }
       })
       
-    }
+    },[dispatchPostList]);
+
+    //useMemo simple example:
+    // let arr = [3,4,35,6,7,8];
+    // const sortedArr = useMemo(()=>arr.sort(),[arr])// tellig like when ever the arr changes than only entire function reexecute else it will not.
 
     const setSpinner = (bool) => {
         try{
@@ -133,7 +138,7 @@ const DEFAULT_POST_LIST=[
         body:'Such a nice weather at bangalore',
         reactions:50,
         userId:'admin',
-        tags:['vacation','bagalore','software','surprice']
+        tags:['#vacation','#bagalore','#software','#surprice']
     
     },
    
@@ -144,7 +149,7 @@ const DEFAULT_POST_LIST=[
     body:'Afer a log hard work i got my dream job',
     reactions:10,
     userId:'admin',
-    tags:['job','hardwork','software']
+    tags:['#job','#hardwork','#software']
 },
 {
     post_id:'3',
@@ -153,7 +158,7 @@ const DEFAULT_POST_LIST=[
     body:'Hi friends i am going to mumbai for vacations',
     reactions:2,
     userId:'admin1',
-    tags:['vacation','mumbai','enjoying']
+    tags:['#vacation','#mumbai','#enjoying']
 },
 
 ];
