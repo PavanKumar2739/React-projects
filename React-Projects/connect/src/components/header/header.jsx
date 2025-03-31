@@ -14,7 +14,7 @@ const Header = () => {
   const [quotation, setQuotation] = useState('');
   const fetchRandomQuotation = () => {
     const randomIndex = Math.floor(Math.random() * quotations.length);
-    setQuotation(quotations[randomIndex]);
+    setQuotation(quotations[randomIndex]); 
   };
 
 

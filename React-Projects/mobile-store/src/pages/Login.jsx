@@ -30,7 +30,7 @@ const Login = () => {
     }
     const onChange=(e)=>{
         setUserData({...userData,[e.target.name]:e.target.value})
-    }
+    } 
     const {username,password}=userData;
 
     return (
